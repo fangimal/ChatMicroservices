@@ -1,0 +1,32 @@
+# More info on config here: https://golangci-lint.run/usage/configuration/#config-file
+#golangci-lint config verify --config .golangci.pipeline.yaml
+
+version: "2"
+
+run:
+  concurrency: 8
+  timeout: 10m
+  issues-exit-code: 1
+  tests: true
+
+
+output:
+  formats:
+    text:
+      print-issued-lines: true
+      print-linter-name: true
+
+linters:
+  default: none
+  enable:
+    - errcheck
+    - goconst
+    - gosec
+    - govet
+    - ineffassign
+    - revive
+    - unused
+  exclusions:
+    paths:
+      - \.pb\.go$
+      - \.pb\.gw\.go$
